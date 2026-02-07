@@ -2,8 +2,6 @@
 
 StudySync is a comprehensive study planning application designed to help students organize their academic life, track progress, and build better study habits.
 
-![StudySync Dashboard](client/src/assets/app-logo.png)
-
 ## 🚀 Key Features
 
 *   **Subject Management**: Organize courses, topics, and set target study hours.
@@ -80,3 +78,4 @@ Contributions are welcome! Please fork the repository and submit a pull request.
 ## 📄 License
 
 This project is licensed under the MIT License.
+
