@@ -42,8 +42,8 @@ export default function Landing() {
 
 
       {/* HERO */}
-      <section className="flex flex-col items-center justify-center text-center h-[70vh] px-6">
-        <p className="text-[2.5rem] md:text-[3.5rem] font-bold leading-tight ">
+      <section className="flex flex-col items-center justify-center text-center h-[70vh] px-4 md:px-6">
+        <p className="text-4xl md:text-[3.5rem] font-bold leading-tight ">
           StudySync helps <br />
           students to{" "}
           <span className="text-[#ffa500]">plan, track, analyse</span> <br />
@@ -59,8 +59,8 @@ export default function Landing() {
       </section>
 
       {/* FEATURES */}
-      <section className="bg-[#ffa500] mx-6 md:mx-16 rounded-3xl py-20 flex flex-col justify-center text-center">
-        <h2 className="text-[2.5rem] md:text-[3.5rem] text-[#fff8e1] font-bold mb-16 px-4">
+      <section className="bg-[#ffa500] mx-4 md:mx-16 rounded-3xl py-12 md:py-20 flex flex-col justify-center text-center">
+        <h2 className="text-3xl md:text-[3.5rem] text-[#fff8e1] font-bold mb-10 md:mb-16 px-4">
           Why Choose StudySync?
         </h2>
 
@@ -89,32 +89,32 @@ export default function Landing() {
       </section>
 
       {/* HOW IT WORKS */}
-      <section className="py-20 px-6 bg-white">
+      <section className="py-12 md:py-20 px-6 bg-white">
         <div className="max-w-6xl mx-auto text-center">
-          <h2 className="text-3xl md:text-5xl font-bold mb-16 text-gray-800">How StudySync Works</h2>
+          <h2 className="text-3xl md:text-5xl font-bold mb-10 md:mb-16 text-gray-800">How StudySync Works</h2>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-12 relative">
             {/* Connecting Line (Desktop) */}
             <div className="hidden md:block absolute top-12 left-[20%] right-[20%] h-1 bg-[#fff8e1] -z-0"></div>
 
             <div className="relative z-10 flex flex-col items-center">
-              <div className="w-24 h-24 bg-[#fff8e1] rounded-full flex items-center justify-center mb-6 border-4 border-white shadow-lg">
-                <span className="text-4xl font-bold text-[#ffa500]">1</span>
+              <div className="w-16 h-16 md:w-24 md:h-24 bg-[#ffa500]/10 rounded-full flex items-center justify-center mb-4 md:mb-6 border-4 border-white shadow-lg">
+                <span className="text-2xl md:text-4xl font-bold text-[#ffa500]">1</span>
               </div>
               <h3 className="text-xl font-bold mb-3">Set Your Subjects</h3>
               <p className="text-gray-500 leading-relaxed">Input your courses and topics to create a personalized dashboard tailored to your curriculum.</p>
             </div>
 
             <div className="relative z-10 flex flex-col items-center">
-              <div className="w-24 h-24 bg-[#fff8e1] rounded-full flex items-center justify-center mb-6 border-4 border-white shadow-lg">
-                <span className="text-4xl font-bold text-[#ffa500]">2</span>
+              <div className="w-16 h-16 md:w-24 md:h-24 bg-[#ffa500]/10 rounded-full flex items-center justify-center mb-4 md:mb-6 border-4 border-white shadow-lg">
+                <span className="text-2xl md:text-4xl font-bold text-[#ffa500]">2</span>
               </div>
               <h3 className="text-xl font-bold mb-3">Plan Your Schedule</h3>
               <p className="text-gray-500 leading-relaxed">Use our smart calendar to organize study sessions and never miss a deadline again.</p>
             </div>
 
             <div className="relative z-10 flex flex-col items-center">
-              <div className="w-24 h-24 bg-[#fff8e1] rounded-full flex items-center justify-center mb-6 border-4 border-white shadow-lg">
-                <span className="text-4xl font-bold text-[#ffa500]">3</span>
+              <div className="w-16 h-16 md:w-24 md:h-24 bg-[#ffa500]/10 rounded-full flex items-center justify-center mb-4 md:mb-6 border-4 border-white shadow-lg">
+                <span className="text-2xl md:text-4xl font-bold text-[#ffa500]">3</span>
               </div>
               <h3 className="text-xl font-bold mb-3">Track & Improve</h3>
               <p className="text-gray-500 leading-relaxed">Log your study time, visualize progress, and turn productive habits into a streak.</p>
@@ -124,8 +124,8 @@ export default function Landing() {
       </section>
 
       {/* CTA SECTION */}
-      <section className="py-24 px-6">
-        <div className="max-w-5xl mx-auto bg-[#ffa500] rounded-[2.5rem] p-12 md:p-20 text-center relative overflow-hidden shadow-xl hover:shadow-2xl transition duration-500">
+      <section className="py-12 md:py-24 px-4 md:px-6">
+        <div className="max-w-5xl mx-auto bg-[#ffa500] rounded-[2rem] md:rounded-[2.5rem] p-8 md:p-20 text-center relative overflow-hidden shadow-xl hover:shadow-2xl transition duration-500">
           {/* Decorative circles */}
           <div className="absolute top-0 left-0 w-64 h-64 bg-white/10 rounded-full -translate-x-1/2 -translate-y-1/2 blur-2xl"></div>
           <div className="absolute bottom-0 right-0 w-64 h-64 bg-black/5 rounded-full translate-x-1/2 translate-y-1/2 blur-2xl"></div>
