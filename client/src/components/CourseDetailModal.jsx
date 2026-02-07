@@ -94,65 +94,66 @@ export default function CourseDetailModal({ course, onClose, onStart }) {
                 {/* Content */}
                 <div className="p-6 overflow-y-auto flex-1 bg-gray-50/50 dark:bg-gray-900">
                     {activeTab === "topics" && (
-                        <div className="space-y-4">
+                        <div className="space-y-3">
                             {!course.topics || course.topics.length === 0 ? (
                                 <p className="text-gray-400 text-center py-8">No topics added yet.</p>
                             ) : (
-                                <table className="w-full text-left border-collapse">
-                                    <thead>
-                                        <tr className="border-b border-gray-100 dark:border-gray-700 text-xs text-gray-400 uppercase tracking-wider">
-                                            <th className="py-3 pl-4">Status</th>
-                                            <th className="py-3">Topic</th>
-                                            <th className="py-3 pr-4 text-right">Resources</th>
-                                        </tr>
-                                    </thead>
-                                    <tbody className="divide-y divide-gray-50 dark:divide-gray-800">
-                                        {localTopics.map((topic, i) => (
-                                            <tr key={topic.id} className="group hover:bg-gray-50/50 dark:hover:bg-gray-800/50 transition">
-                                                <td className="py-3 pl-4 w-12">
-                                                    <button
-                                                        onClick={() => handleToggle(topic.id)}
-                                                        className="text-gray-300 hover:text-[#ffa500] transition"
-                                                    >
-                                                        {topic.isCompleted ? <CheckCircle size={20} className="text-green-500 bg-green-50 dark:bg-green-900/30 rounded-full" /> : <Circle size={20} />}
-                                                    </button>
-                                                </td>
-                                                <td
-                                                    className="py-3 cursor-pointer"
+                                <div className="flex flex-col gap-2">
+                                    {/* Header (Desktop onlyish, or just hidden for mobile simplicity) */}
+                                    <div className="hidden md:flex justify-between text-xs text-gray-400 uppercase tracking-wider px-4 pb-2 border-b border-gray-100 dark:border-gray-700">
+                                        <span className="w-12">Status</span>
+                                        <span className="flex-1">Topic</span>
+                                        <span>Resources</span>
+                                    </div>
+
+                                    {localTopics.map((topic) => (
+                                        <div key={topic.id} className="group bg-white dark:bg-gray-800 p-3 rounded-xl border border-transparent hover:border-gray-100 dark:hover:border-gray-700 hover:shadow-sm transition flex flex-col md:flex-row gap-3 items-start md:items-center">
+                                            {/* Top Row (Mobile): Status + Title */}
+                                            <div className="flex items-start gap-3 flex-1 w-full">
+                                                <button
+                                                    onClick={() => handleToggle(topic.id)}
+                                                    className="mt-0.5 text-gray-300 hover:text-[#ffa500] transition shrink-0"
+                                                >
+                                                    {topic.isCompleted ? <CheckCircle size={22} className="text-green-500 bg-green-50 dark:bg-green-900/30 rounded-full" /> : <Circle size={22} />}
+                                                </button>
+
+                                                <div
+                                                    className="flex-1 cursor-pointer"
                                                     onClick={() => handleToggle(topic.id)}
                                                 >
-                                                    <div className="flex flex-col gap-1">
-                                                        <span className={`font-bold text-gray-800 dark:text-gray-200 capitalize ${topic.isCompleted ? 'line-through text-gray-400 dark:text-gray-600' : ''}`}>
-                                                            {topic.title}
-                                                        </span>
-                                                        {(topic.targetMinutes > 0) && (
-                                                            <div className="flex items-center gap-1 text-[10px] text-gray-400 font-medium">
-                                                                <Clock size={10} className="text-orange-400" />
-                                                                <span>{topic.targetMinutes} mins</span>
-                                                            </div>
-                                                        )}
+                                                    <div className={`font-bold text-gray-800 dark:text-gray-200 capitalize leading-tight ${topic.isCompleted ? 'line-through text-gray-400 dark:text-gray-600' : ''}`}>
+                                                        {topic.title}
                                                     </div>
-                                                </td>
-                                                <td className="py-3 pr-4 text-right">
-                                                    {(topic.resources || []).length > 0 ? (
-                                                        <div className="flex gap-2 justify-end">
-                                                            {topic.resources.map((r, idx) => (
-                                                                <a key={idx} href={r.url} target="_blank" rel="noopener noreferrer"
-                                                                    className="bg-orange-50 dark:bg-orange-900/30 text-orange-600 dark:text-orange-400 p-1.5 rounded-md hover:bg-orange-100 dark:hover:bg-orange-900/50 transition"
-                                                                    title={`${r.type}: ${r.title}`}
-                                                                >
-                                                                    {r.type === 'video' ? <Video size={14} /> : <LinkIcon size={14} />}
-                                                                </a>
-                                                            ))}
+                                                    {(topic.targetMinutes > 0) && (
+                                                        <div className="flex items-center gap-1 text-[11px] text-gray-400 font-medium mt-1">
+                                                            <Clock size={12} className="text-orange-400" />
+                                                            <span>{topic.targetMinutes} mins</span>
                                                         </div>
-                                                    ) : (
-                                                        <span className="text-xs text-gray-300">-</span>
                                                     )}
-                                                </td>
-                                            </tr>
-                                        ))}
-                                    </tbody>
-                                </table>
+                                                </div>
+                                            </div>
+
+                                            {/* Bottom Row (Mobile): Resources - Right aligned on Desktop */}
+                                            <div className="pl-10 md:pl-0 flex justify-end md:justify-end w-full md:w-auto">
+                                                {(topic.resources || []).length > 0 ? (
+                                                    <div className="flex gap-2 flex-wrap justify-end">
+                                                        {topic.resources.map((r, idx) => (
+                                                            <a key={idx} href={r.url} target="_blank" rel="noopener noreferrer"
+                                                                className="bg-orange-50 dark:bg-orange-900/30 text-orange-600 dark:text-orange-400 p-2 rounded-lg hover:bg-orange-100 dark:hover:bg-orange-900/50 transition flex items-center gap-2"
+                                                                title={`${r.type}: ${r.title}`}
+                                                            >
+                                                                {r.type === 'video' ? <Video size={16} className="shrink-0" /> : <LinkIcon size={16} className="shrink-0" />}
+                                                                <span className="text-xs font-medium max-w-[80px] truncate md:hidden">{r.title}</span>
+                                                            </a>
+                                                        ))}
+                                                    </div>
+                                                ) : (
+                                                    <span className="hidden md:inline text-xs text-gray-300">-</span>
+                                                )}
+                                            </div>
+                                        </div>
+                                    ))}
+                                </div>
                             )}
                         </div>
                     )}
@@ -165,7 +166,7 @@ export default function CourseDetailModal({ course, onClose, onStart }) {
                                 course.topics.flatMap(t => (t.resources || []).map(r => ({ ...r, topicTitle: t.title }))).map((res, i) => (
                                     <a key={i} href={res.url} target="_blank" rel="noopener noreferrer" className="block bg-white dark:bg-gray-800 p-4 rounded-xl shadow-sm border border-gray-100 dark:border-gray-700 hover:border-[#ffa500] hover:shadow-md transition group">
                                         <div className="flex items-start gap-3">
-                                            <div className={`w-10 h-10 rounded-full flex items-center justify-center ${res.type === 'video' ? 'bg-red-100 dark:bg-red-900/30 text-red-500' : 'bg-blue-100 dark:bg-blue-900/30 text-blue-500'}`}>
+                                            <div className={`w-10 h-10 rounded-full flex items-center justify-center shrink-0 ${res.type === 'video' ? 'bg-red-100 dark:bg-red-900/30 text-red-500' : 'bg-blue-100 dark:bg-blue-900/30 text-blue-500'}`}>
                                                 {res.type === 'video' ? <Video size={20} /> : <LinkIcon size={20} />}
                                             </div>
                                             <div>

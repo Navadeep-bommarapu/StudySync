@@ -137,7 +137,7 @@ export default function Settings() {
                         Account
                     </h2>
                     <div className="flex items-center gap-4 mb-6">
-                        <div className="w-16 h-16 rounded-full border-2 border-[#ffa500] p-0.5 overflow-hidden bg-white">
+                        <div className="w-16 h-16 rounded-full border-2 border-[#ffa500] p-0.5 overflow-hidden bg-white shrink-0">
                             <img
                                 className="rounded-full w-full h-full object-cover"
                                 src={user?.gender === 'female' ? "https://api.dicebear.com/7.x/avataaars/svg?seed=Felix" : "https://api.dicebear.com/7.x/avataaars/svg?seed=Aneka"}

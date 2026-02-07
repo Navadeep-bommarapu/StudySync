@@ -46,22 +46,30 @@ export default function CalendarPage() {
         if (view === "month") {
             const dayCourses = getCoursesForDate(date);
             return dayCourses.length > 0 ? (
-                <div className="flex flex-col gap-1 mt-1 w-full px-1">
-                    {dayCourses.slice(0, 3).map((course, i) => {
-                        const isCompleted = (parseFloat(course.studiedHours || 0) >= parseFloat(course.targetHours || 0) && parseFloat(course.targetHours || 0) > 0);
-                        return (
-                            <div
-                                key={course.id}
-                                className={`text-[10px] truncate px-1.5 py-0.5 rounded-md font-medium capitalize ${isCompleted ? 'bg-green-100 dark:bg-green-900/30 text-green-600 decoration-green-600' : 'bg-[#ffa500]/10 text-orange-700'}`}
-                                title={course.title}
-                            >
-                                {course.title}
-                            </div>
-                        )
-                    })}
-                    {dayCourses.length > 3 && (
-                        <span className="text-[9px] text-gray-400 pl-1">+{dayCourses.length - 3} more</span>
-                    )}
+                <div className="flex flex-col items-center justify-start w-full h-full">
+                    {/* Mobile: Dot Indicator */}
+                    <div className="md:hidden mt-1">
+                        <div className="w-1.5 h-1.5 rounded-full bg-[#ffa500]"></div>
+                    </div>
+
+                    {/* Desktop: Course List */}
+                    <div className="hidden md:flex flex-col gap-1 mt-1 w-full px-1">
+                        {dayCourses.slice(0, 3).map((course, i) => {
+                            const isCompleted = (parseFloat(course.studiedHours || 0) >= parseFloat(course.targetHours || 0) && parseFloat(course.targetHours || 0) > 0);
+                            return (
+                                <div
+                                    key={course.id}
+                                    className={`text-[10px] truncate px-1.5 py-0.5 rounded-md font-medium capitalize ${isCompleted ? 'bg-green-100 dark:bg-green-900/30 text-green-600 decoration-green-600' : 'bg-[#ffa500]/10 text-orange-700'}`}
+                                    title={course.title}
+                                >
+                                    {course.title}
+                                </div>
+                            )
+                        })}
+                        {dayCourses.length > 3 && (
+                            <span className="text-[9px] text-gray-400 pl-1">+{dayCourses.length - 3} more</span>
+                        )}
+                    </div>
                 </div>
             ) : null;
         }
@@ -95,7 +103,7 @@ export default function CalendarPage() {
                         next2Label={null}
                         prev2Label={null}
                         tileClassName={({ activeStartDate, date, view }) =>
-                            "rounded-xl hover:bg-orange-50 dark:hover:bg-gray-700 focus:bg-orange-100 dark:focus:bg-gray-600 transition-all h-24 flex flex-col items-center justify-start pt-2 text-sm font-medium text-gray-700 dark:text-gray-300 data-[active]:bg-[#ffa500] data-[active]:text-white"
+                            "rounded-xl hover:bg-orange-50 dark:hover:bg-gray-700 focus:bg-orange-100 dark:focus:bg-gray-600 transition-all aspect-square md:aspect-auto md:h-24 flex flex-col items-center justify-start pt-1 md:pt-2 text-xs md:text-sm font-medium text-gray-700 dark:text-gray-300 data-[active]:bg-[#ffa500] data-[active]:text-white"
                         }
                     />
                 </div>
