@@ -25,7 +25,7 @@ export default function Landing() {
   }, [navigate]);
 
   return (
-    <>
+    <div className="overflow-x-hidden w-full">
       <Navbar
         onLoginClick={() => setAuthModal("login")}
         onSignupClick={() => setAuthModal("signup")}
@@ -42,8 +42,8 @@ export default function Landing() {
 
 
       {/* HERO */}
-      <section className="flex flex-col items-center justify-center text-center h-[70vh] px-4 md:px-6">
-        <p className="text-4xl md:text-[3.5rem] font-bold leading-tight ">
+      <section className="flex flex-col items-center justify-center text-center h-[70vh] px-4 md:px-6 w-full">
+        <p className="text-3xl md:text-[3.5rem] font-bold leading-tight max-w-full">
           StudySync helps <br />
           students to{" "}
           <span className="text-[#ffa500]">plan, track, analyse</span> <br />
@@ -59,12 +59,12 @@ export default function Landing() {
       </section>
 
       {/* FEATURES */}
-      <section className="bg-[#ffa500] mx-4 md:mx-16 rounded-3xl py-12 md:py-20 flex flex-col justify-center text-center">
-        <h2 className="text-3xl md:text-[3.5rem] text-[#fff8e1] font-bold mb-10 md:mb-16 px-4">
+      <section className="bg-[#ffa500] mx-4 md:mx-16 rounded-3xl py-10 md:py-20 flex flex-col justify-center text-center relative overflow-hidden">
+        <h2 className="text-2xl md:text-[3.5rem] text-[#fff8e1] font-bold mb-8 md:mb-16 px-2">
           Why Choose StudySync?
         </h2>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 px-6 md:px-12">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 md:gap-8 px-4 md:px-12">
           <FeatureCard
             icon={books}
             title="Subject Management"
@@ -89,9 +89,9 @@ export default function Landing() {
       </section>
 
       {/* HOW IT WORKS */}
-      <section className="py-12 md:py-20 px-6 bg-white">
+      <section className="py-10 md:py-20 px-4 md:px-6 bg-white overflow-hidden">
         <div className="max-w-6xl mx-auto text-center">
-          <h2 className="text-3xl md:text-5xl font-bold mb-10 md:mb-16 text-gray-800">How StudySync Works</h2>
+          <h2 className="text-2xl md:text-5xl font-bold mb-8 md:mb-16 text-gray-800">How StudySync Works</h2>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-12 relative">
             {/* Connecting Line (Desktop) */}
             <div className="hidden md:block absolute top-12 left-[20%] right-[20%] h-1 bg-[#fff8e1] -z-0"></div>
@@ -145,8 +145,7 @@ export default function Landing() {
         </div>
       </section>
 
-
       <Footer />
-    </>
+    </div>
   );
 }
