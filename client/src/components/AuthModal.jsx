@@ -47,19 +47,19 @@ export default function AuthModal({ type, onClose, onSwitch }) {
                 animate={{ opacity: 1, scale: 1 }}
                 exit={{ opacity: 0, scale: 0.9 }}
                 transition={{ duration: 0.3 }}
-                className="bg-white rounded-xl w-full max-w-md p-10 text-center shadow-2xl relative"
+                className="bg-white md:rounded-xl w-full md:w-[90%] max-w-sm md:max-w-md p-4 md:p-10 text-center md:shadow-2xl relative h-full md:h-auto flex flex-col justify-center"
             >
                 <button
                     onClick={onClose}
-                    className="absolute top-4 right-4 text-gray-500 hover:text-black text-xl font-bold"
+                    className="absolute top-4 right-4 text-gray-400 hover:text-black text-2xl font-bold z-50"
                 >
                     ✕
                 </button>
 
-                <h1 className="text-4xl font-bold text-[#ffa500] mb-2">
+                <h1 className="text-xl md:text-3xl font-bold text-[#ffa500] mb-2">
                     {isLogin ? "Login" : "Sign Up"}
                 </h1>
-                <p className="text-gray-500 mt-2 mb-8">
+                <p className="text-gray-400 mt-1 mb-4 md:mb-6 text-xs md:text-base">
                     {isLogin ? "Welcome back to your study planner" : "Start planning your studies smarter"}
                 </p>
 

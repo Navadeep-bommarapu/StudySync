@@ -59,12 +59,12 @@ export default function Landing() {
       </section>
 
       {/* FEATURES */}
-      <section className="bg-[#ffa500] mx-4 md:mx-16 rounded-3xl py-10 md:py-20 flex flex-col justify-center text-center relative overflow-hidden">
-        <h2 className="text-2xl md:text-[3.5rem] text-[#fff8e1] font-bold mb-8 md:mb-16 px-2">
+      <section className="bg-[#ffa500] mx-4 md:mx-16 rounded-3xl py-8 md:py-20 flex flex-col justify-center text-center relative overflow-hidden">
+        <h2 className="text-xl md:text-[3.5rem] text-[#fff8e1] font-bold mb-6 md:mb-16 px-2">
           Why Choose StudySync?
         </h2>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 md:gap-8 px-4 md:px-12">
+        <div className="grid grid-cols-2 lg:grid-cols-4 gap-3 md:gap-8 px-3 md:px-12">
           <FeatureCard
             icon={books}
             title="Subject Management"
@@ -124,21 +124,21 @@ export default function Landing() {
       </section>
 
       {/* CTA SECTION */}
-      <section className="py-12 md:py-24 px-4 md:px-6">
-        <div className="max-w-5xl mx-auto bg-[#ffa500] rounded-[2rem] md:rounded-[2.5rem] p-8 md:p-20 text-center relative overflow-hidden shadow-xl hover:shadow-2xl transition duration-500">
+      <section className="py-8 md:py-24 px-4 md:px-6">
+        <div className="max-w-5xl mx-auto bg-[#ffa500] rounded-[1.5rem] md:rounded-[2.5rem] p-6 md:p-20 text-center relative overflow-hidden shadow-xl hover:shadow-2xl transition duration-500">
           {/* Decorative circles */}
           <div className="absolute top-0 left-0 w-64 h-64 bg-white/10 rounded-full -translate-x-1/2 -translate-y-1/2 blur-2xl"></div>
           <div className="absolute bottom-0 right-0 w-64 h-64 bg-black/5 rounded-full translate-x-1/2 translate-y-1/2 blur-2xl"></div>
 
-          <h2 className="text-3xl md:text-5xl font-bold text-white mb-6 relative z-10">
+          <h2 className="text-xl md:text-5xl font-bold text-white mb-4 md:mb-6 relative z-10">
             Ready to Master Your Studies?
           </h2>
-          <p className="text-[#fff8e1] text-lg md:text-xl mb-10 max-w-2xl mx-auto relative z-10">
+          <p className="text-[#fff8e1] text-sm md:text-xl mb-6 md:mb-10 max-w-2xl mx-auto relative z-10">
             Join thousands of students who are organizing their academic life and achieving higher grades with StudySync.
           </p>
           <button
             onClick={() => setAuthModal("signup")}
-            className="bg-white text-[#ffa500] px-10 py-4 rounded-full font-bold text-lg hover:bg-gray-50 hover:scale-105 transition shadow-lg relative z-10"
+            className="bg-white text-[#ffa500] px-6 py-3 md:px-10 md:py-4 rounded-full font-bold text-sm md:text-lg hover:bg-gray-50 hover:scale-105 transition shadow-lg relative z-10"
           >
             Start for Free Today
           </button>
