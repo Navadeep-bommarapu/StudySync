@@ -139,7 +139,7 @@ exports.getStats = async (req, res) => {
                     user.streak = (user.streak || 0) + 1;
                 } else {
                     // Missed a day or first time
-                    user.streak = 1;
+                    user.streak = 0;
                 }
 
                 user.lastActiveDate = todayStr;
