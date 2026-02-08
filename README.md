@@ -75,7 +75,4 @@ See [Deployment Guide](deployment_guide.md) for detailed instructions.
 
 Contributions are welcome! Please fork the repository and submit a pull request.
 
-## 📄 License
-
-This project is licensed under the MIT License.
 
