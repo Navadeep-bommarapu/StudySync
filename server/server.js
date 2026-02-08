@@ -4,6 +4,7 @@ const helmet = require("helmet");
 const morgan = require("morgan");
 require("dotenv").config();
 
+const path = require("path");
 const db = require("./src/models");
 const app = express();
 
@@ -13,6 +14,9 @@ app.use(cors());
 app.use(helmet());
 app.use(morgan("dev"));
 
+// Serve Static Files (Frontend Build)
+app.use(express.static(path.join(__dirname, '../client/dist')));
+
 // Routes
 require("./src/routes/auth.routes")(app);
 require("./src/routes/course.routes")(app);
@@ -20,11 +24,14 @@ require("./src/routes/activity.routes")(app);
 require("./src/routes/review.routes")(app);
 require("./src/routes/topic.routes")(app);
 
-// Test Route
-
-// Test Route
-app.get("/", (req, res) => {
+// Test Route (API)
+app.get("/api", (req, res) => {
     res.json({ message: "Welcome to Smart Study Planner API" });
+});
+
+// Wildcard Route (Serve React App)
+app.get('*', (req, res) => {
+    res.sendFile(path.join(__dirname, '../client/dist/index.html'));
 });
 
 // Sync Database and Start Server
