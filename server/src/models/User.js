@@ -23,6 +23,13 @@ module.exports = (sequelize, DataTypes) => {
         dob: {
             type: DataTypes.DATEONLY,
         },
+        streak: {
+            type: DataTypes.INTEGER,
+            defaultValue: 0
+        },
+        lastActiveDate: {
+            type: DataTypes.DATEONLY, // YYYY-MM-DD
+        }
     });
 
     return User;

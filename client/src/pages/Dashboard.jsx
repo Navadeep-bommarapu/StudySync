@@ -54,6 +54,7 @@ export default function Dashboard() {
   const [detailCourse, setDetailCourse] = useState(null); // Course for modal details
 
   const [activityData, setActivityData] = useState([]);
+  const [streak, setStreak] = useState(0);
 
   const { theme, toggleTheme } = useTheme();
 
@@ -86,6 +87,7 @@ export default function Dashboard() {
     try {
       const res = await ActivityService.getStats(userId);
       setActivityData(res.data.yearlyData || []);
+      setStreak(res.data.streak || 0);
     } catch (err) {
       console.error(err);
     }
@@ -354,7 +356,7 @@ export default function Dashboard() {
                   <div className="flex justify-between items-center mb-6">
                     <h3 className={`text-xl font-bold ${hasActivity ? 'text-gray-800 dark:text-white' : 'text-gray-300 dark:text-gray-600'}`}>Study Activity</h3>
                     <div className="flex items-center gap-2 text-sm font-bold text-orange-500 bg-orange-50 dark:bg-gray-700 px-3 py-1 rounded-full">
-                      🔥 Streak: {activityData.streak || 0} Days
+                      🔥 Streak: {streak} Days
                     </div>
                   </div>
 
@@ -560,7 +562,7 @@ export default function Dashboard() {
               </div>
               <p className="text-gray-400 text-xs font-bold uppercase tracking-wide">Current Streak</p>
               <h4 className="text-2xl font-bold text-gray-800 dark:text-white mt-1">
-                {activityData?.currentStreak || 0} days
+                {streak} days
               </h4>
             </div>
           </div>

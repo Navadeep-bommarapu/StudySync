@@ -119,54 +119,43 @@ exports.getStats = async (req, res) => {
             });
         }
 
-        // --- 2. Strict Streak Calculation ---
-        const allLogs = await ActivityLog.findAll({
-            where: { userId: userId },
-            attributes: [
-                [Sequelize.fn('DATE', Sequelize.col('date')), 'formattedDate']
-            ],
-            group: ['formattedDate'],
-            order: [[Sequelize.fn('DATE', Sequelize.col('date')), 'DESC']]
-        });
-
+        // --- 2. Login/Activity Streak Calculation ---
         let streak = 0;
-        const uniqueDates = allLogs.map(l => l.get('formattedDate'));
+        const User = db.User;
+        const user = await User.findByPk(userId);
 
-        if (uniqueDates.length > 0) {
-            const todayStr = new Date().toISOString().split('T')[0];
-            const yesterday = new Date();
-            yesterday.setDate(yesterday.getDate() - 1);
-            const yesterdayStr = yesterday.toISOString().split('T')[0];
+        if (user) {
+            const todayStr = new Date().toLocaleDateString('en-CA'); // "YYYY-MM-DD" in local time
+            const lastActive = user.lastActiveDate;
 
-            // Check if user studied Today or Yesterday. If not, streak is broken -> 0.
-            if (uniqueDates[0] === todayStr || uniqueDates[0] === yesterdayStr) {
-                streak = 1;
+            // If already visited today, do nothing.
+            if (lastActive !== todayStr) {
+                const yesterday = new Date();
+                yesterday.setDate(yesterday.getDate() - 1);
+                const yesterdayStr = yesterday.toLocaleDateString('en-CA');
 
-                // Check backwards for consecutiveness
-                // Start comparing from the relevant date (if today present, compare with yesterday, else compare yesterday with day before)
-                let currentDate = new Date(uniqueDates[0]);
-
-                for (let i = 1; i < uniqueDates.length; i++) {
-                    const prevDate = new Date(currentDate);
-                    prevDate.setDate(prevDate.getDate() - 1);
-                    const prevDateStr = prevDate.toISOString().split('T')[0];
-
-                    if (uniqueDates[i] === prevDateStr) {
-                        streak++;
-                        currentDate = new Date(uniqueDates[i]);
-                    } else {
-                        break; // Gap found
-                    }
+                if (lastActive === yesterdayStr) {
+                    // Consecutive day
+                    user.streak = (user.streak || 0) + 1;
+                } else {
+                    // Missed a day or first time
+                    user.streak = 1;
                 }
+
+                user.lastActiveDate = todayStr;
+                await user.save();
             }
+            streak = user.streak;
+        } else {
+            streak = 0;
         }
 
         // Return response
-        // Return response
+        const totalSessions = await ActivityLog.count({ where: { userId } });
         res.send({
             yearlyData: yearlyStats,
             streak,
-            totalSessions: allLogs.length
+            totalSessions
         });
 
     } catch (err) {
