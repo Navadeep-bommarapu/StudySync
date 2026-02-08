@@ -29,9 +29,9 @@ app.get("/api", (req, res) => {
     res.json({ message: "Welcome to Smart Study Planner API" });
 });
 
-// Wildcard Route (Serve React App)
+// Wildcard Route (Redirect to Home on Refresh/Deep Link)
 app.get('*', (req, res) => {
-    res.sendFile(path.join(__dirname, '../client/dist/index.html'));
+    res.redirect('/');
 });
 
 // Sync Database and Start Server
