@@ -15,7 +15,7 @@ app.use(helmet());
 app.use(morgan("dev"));
 
 // Serve Static Files (Frontend Build)
-app.use(express.static(path.join(__dirname, '../client/dist')));
+app.use(express.static(path.join(__dirname, 'public')));
 
 // Routes
 require("./src/routes/auth.routes")(app);
