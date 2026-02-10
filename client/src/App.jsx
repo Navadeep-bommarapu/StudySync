@@ -1,4 +1,5 @@
 import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
+import { Analytics } from "@vercel/analytics/react";
 
 import Landing from "./pages/Landing";
 import Dashboard from "./pages/Dashboard";
@@ -32,6 +33,7 @@ function App() {
             <Route path="/dashboard" element={<Navigate to="/app/dashboard" replace />} />
             <Route path="/calendar" element={<Navigate to="/app/calendar" replace />} />
           </Routes>
+          <Analytics />
         </NotificationProvider>
       </BrowserRouter>
     </ThemeProvider>
